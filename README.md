@@ -86,7 +86,7 @@ npm install
 
 # Start development server
 npm run dev
-Open http://localhost:3000 in your browser to see the magic!
+Open https://gigguard-escrow.vercel.app/ in your browser to see the magic!
 
 💸 Get Testnet XLM (Free)
 Connect your wallet to the app.
