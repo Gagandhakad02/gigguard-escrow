@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nexus Escrow — matte black console with calibrated LED indicators */
+@layer base {
+  :root {
+    --background: 220 14% 4%;
+    --foreground: 220 14% 90%;
+
+    --card: 222 14% 7%;
+    --card-foreground: 220 14% 90%;
+
+    --popover: 222 14% 7%;
+    --popover-foreground: 220 14% 90%;
+
+    --primary: 184 100% 50%;
+    --primary-foreground: 220 14% 4%;
+
+    --secondary: 220 10% 12%;
+    --secondary-foreground: 220 14% 90%;
+
+    --muted: 220 10% 10%;
+    --muted-foreground: 220 8% 50%;
+
+    --accent: 184 100% 50%;
+    --accent-foreground: 220 14% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 14% 95%;
+
+    --border: 220 10% 14%;
+    --input: 220 10% 14%;
+    --ring: 184 100% 50%;
+
+    --radius: 0.25rem;
+
+    /* LED tokens */
+    --led-cyan: 184 100% 50%;
+    --led-green: 140 100% 50%;
+    --led-amber: 40 100% 50%;
+    --led-red: 0 100% 60%;
+
+    /* Glows */
+    --glow-cyan: 0 0 12px hsl(184 100% 50% / 0.6);
+    --glow-green: 0 0 12px hsl(140 100% 50% / 0.7);
+    --glow-amber: 0 0 12px hsl(40 100% 50% / 0.7);
+    --glow-red: 0 0 12px hsl(0 100% 60% / 0.7);
+
+    /* Surfaces */
+    --surface-base: 220 14% 4%;
+    --surface-panel: 222 14% 7%;
+    --surface-hover: 222 12% 10%;
+    --border-subtle: 220 10% 14%;
+    --border-strong: 220 10% 22%;
+
+    --sidebar-background: 222 14% 7%;
+    --sidebar-foreground: 220 14% 90%;
+    --sidebar-primary: 184 100% 50%;
+    --sidebar-primary-foreground: 220 14% 4%;
+    --sidebar-accent: 220 10% 12%;
+    --sidebar-accent-foreground: 220 14% 90%;
+    --sidebar-border: 220 10% 14%;
+    --sidebar-ring: 184 100% 50%;
+  }
+
+  .dark {
+    /* same as :root — this app is dark-only */
+    --background: 220 14% 4%;
+    --foreground: 220 14% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body, #root {
+    @apply bg-background text-foreground;
+    min-height: 100dvh;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 10%, hsl(184 100% 50% / 0.04), transparent 40%),
+      radial-gradient(circle at 85% 90%, hsl(184 100% 50% / 0.03), transparent 40%);
+  }
+  ::selection {
+    background: hsl(var(--led-cyan) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .glow-cyan { box-shadow: var(--glow-cyan); }
+  .glow-green { box-shadow: var(--glow-green); }
+  .glow-amber { box-shadow: var(--glow-amber); }
+  .glow-red { box-shadow: var(--glow-red); }
+  .text-glow-cyan { text-shadow: 0 0 8px hsl(var(--led-cyan) / 0.6); }
+  .scanline-top {
+    position: relative;
+  }
+  .scanline-top::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0; height: 1px;
+    background: hsl(var(--led-cyan));
+    box-shadow: var(--glow-cyan);
+  }
+}
